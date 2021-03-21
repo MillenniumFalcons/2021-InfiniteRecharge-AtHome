@@ -55,13 +55,12 @@ public class Trajectories {
        Constants.cField.BounceForwardA_END, forwardTrajectoryConfig);
 
        public static Trajectory AutoNav_Bounce_backwardA = TrajectoryGenerator.generateTrajectory(Constants.cField.BounceBackwardsA_START,
-      Arrays.asList(Constants.cField.BounceBackwardsA_Setup, Constants.cField.BounceBackwardsA_firstPoint, Constants.cField.BounceBackwardsA_secondPoint,
-       Constants.cField.BounceBackwardsA_thirdPoint, Constants.cField.BounceBackwardsA_thirdPoint),
+      Arrays.asList(Constants.cField.BounceBackwardsA_Setup, Constants.cField.BounceBackwardsA_firstPoint, Constants.cField.BounceBackwardsA_secondPoint),
        Constants.cField.BounceBackwardsA_END, reverseTrajectoryConfig);
 
        public static Trajectory AutoNav_Bounce_forwardsB = TrajectoryGenerator.generateTrajectory(Constants.cField.BounceForwardB_START,
       Arrays.asList(Constants.cField.BounceForwardsB_firstPoint, Constants.cField.BounceForwardsB_secondPoint,
-      Constants.cField.BounceForwardsB_thirdPoint, Constants.cField.BounceForwardsB_fourthPoint, Constants.cField.BounceForwardsB_sixthPoint),
+      Constants.cField.BounceForwardsB_thirdPoint, Constants.cField.BounceForwardsB_fourthPoint, Constants.cField.BounceForwardsB_fifthPoint),
        Constants.cField.BounceForwardsB_END, forwardTrajectoryConfig);
 
        public static Trajectory AutoNav_Bounce_backwardB = TrajectoryGenerator.generateTrajectory(Constants.cField.BounceBackwardsB_START,

@@ -104,7 +104,7 @@ public class RobotContainer {
   public void init(){
     dt.init();
     //GalaticSearchRedA dt init
-    dt.setOdometry(Trajectories.AutoNav_Bounce_forwardA.getInitialPose(), new Rotation2d());
+    dt.setOdometry(Trajectories.AutoNav_Slalom.getInitialPose(), new Rotation2d());
     //GalaticSearchRedB
     //dt.setOdometry(Trajectories.GalaticSearch_B_RedTraject.getInitialPose(), new Rotation2d());
     //AutoNav Slalom
@@ -120,7 +120,7 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    return AutoNav_Bounce;
+    return AutoNav_Slalom_Movement;
   }
 
   public boolean getDrivetrainSlowed() {
