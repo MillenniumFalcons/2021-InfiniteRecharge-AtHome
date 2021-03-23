@@ -29,9 +29,6 @@ public class Trajectories {
                         .setKinematics(Constants.cDrivetrain.kDriveKinematics)
                         // Apply the voltage constraint
                         .addConstraint(autoVoltageConstraint).setReversed(true);
-
-    public static Trajectory testPath = TrajectoryGenerator.generateTrajectory(Constants.cField.testStart, Arrays.asList(Constants.cField.testMid),
-    Constants.cField.testEnd, reverseTrajectoryConfig);
     
 
     public static Trajectory GalaticSearch_A_RedTraject = TrajectoryGenerator.generateTrajectory(Constants.cField.GalaticSearch_A_Red_startingPoint,
@@ -46,7 +43,7 @@ public class Trajectories {
       Arrays.asList(Constants.cField.AutoNav_Slalom_intersectA, Constants.cField.AutoNav_Slalom_TopPointOne, Constants.cField.AutoNav_Slalom_TopPointTwo,
        Constants.cField.AutoNav_Slalom_TopPointThree, Constants.cField.AutoNav_Slalom_intersectB, Constants.cField.AutoNav_Slalom_ForwardLoopPointBottom, 
        Constants.cField.AutoNav_Slalom_ForwardMostPoint, Constants.cField.AutoNav_Slalom_ForwardLoopPointTop, Constants.cField.AutoNav_Slalom_intersectB, 
-       Constants.cField.AutoNav_Slalom_TopPointThree_Mirrored, Constants.cField.AutoNav_Slalom_TopPointTwo_Mirrored, Constants.cField.AutoNav_Slalom_TopPointOne_Mirrored,
+       Constants.cField.AutoNav_Slalom_MirroredSetup, Constants.cField.AutoNav_Slalom_TopPointThree_Mirrored, Constants.cField.AutoNav_Slalom_TopPointTwo_Mirrored, Constants.cField.AutoNav_Slalom_TopPointOne_Mirrored,
        Constants.cField.AutoNav_Slalom_intersectA, Constants.cField.EndZoneBreakLine),
       Constants.cField.AutoNav_Slalom_END, forwardTrajectoryConfig);
 

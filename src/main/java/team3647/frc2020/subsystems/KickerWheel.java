@@ -38,7 +38,7 @@ public class KickerWheel implements PeriodicSubsystem {
         double accelerationDemand = ((pIO.RPMReading - demandRPM) / 0.02);
         //feedfoward metod return evlocity or volts or rpm?
         pIO.feedforward = (this.feedforward.calculate(demandRPM, accelerationDemand) / 12.0)
-            * (1023 / PIDConfig.maxVelocity);;
+            * (1023 / PIDConfig.maxVelocity);
         this.pIO.controlMode = ControlMode.Velocity;
     }
 

@@ -247,6 +247,17 @@ public class Constants {
         }
     }
 
+    public static class cShooting {
+        //contains, hood position, flywheel velociy, kicker velocity in that order
+        //hood position in
+        //kicker velocity in
+        //flyhwheel velocity in 
+        public static final double[][] hoodFlywheelKicker = {{0,0,0},
+                                                             {0,0,0},
+                                                             {0,0,0},
+                                                             {0,0,0}};
+    }
+
     public static class cFlywheel {
         public static final int masterPin = 11;
         public static final int slavePin = 12;
@@ -372,26 +383,53 @@ public class Constants {
 
         //AUTONAV Barrel Race
         public static final Pose2d AutoNav_Barrel_Race_Start = new Pose2d(new Translation2d(Units.inches_to_meters(30), Units.inches_to_meters(90)), new Rotation2d(0));
-        public static final Translation2d AutoNav_Barrel_Race_firstLoop_Setup = new Translation2d(Units.inches_to_meters(140), Units.inches_to_meters(95));
+        public static final Translation2d AutoNav_Barrel_Race_firstLoop_Setup = new Translation2d(Units.inches_to_meters(130), Units.inches_to_meters(100));
         public static final Translation2d AutoNav_Barrel_Race_firstLoop_topPoint = new Translation2d(Units.inches_to_meters(150), Units.inches_to_meters(75));
         public static final Translation2d AutoNav_Barrel_Race_firstLoop_rightPoint = new Translation2d(Units.inches_to_meters(165), Units.inches_to_meters(60));
         public static final Translation2d AutoNav_Barrel_Race_firstLoop_lowPoint = new Translation2d(Units.inches_to_meters(150), Units.inches_to_meters(45));
         public static final Translation2d AutoNav_Barrel_Race_firstLoop_leftPoint = new Translation2d(Units.inches_to_meters(135), Units.inches_to_meters(60));
+        public static final Translation2d AutoNav_Barrel_Race_firstLoop_topPointBack = new Translation2d(Units.inches_to_meters(150), Units.inches_to_meters(80));
+        public static final Translation2d AutoNav_Barrel_Race_triTouchPoint = new Translation2d(Units.inches_to_meters(225), Units.inches_to_meters(90));
+        public static final Translation2d AutoNav_Barrel_Race_secondLoop_rightPoint = new Translation2d(Units.inches_to_meters(270), Units.inches_to_meters(120));
+        public static final Translation2d AutoNav_Barrel_Race_secondLoop_topPoint = new Translation2d(Units.inches_to_meters(240), Units.inches_to_meters(35));
+        public static final Translation2d AutoNav_Barrel_Race_secondLoop_leftPoint = new Translation2d(Units.inches_to_meters(225), Units.inches_to_meters(120));
+        //triTouch point once more
+        public static final Translation2d AutoNav_Barrel_Race_thirdLoop_leftPoint = new Translation2d(Units.inches_to_meters(270), Units.inches_to_meters(40));
+        public static final Translation2d AutoNav_Barrel_Race_thirdLoop_bottomPoint = new Translation2d(Units.inches_to_meters(300), Units.inches_to_meters(40));
+        public static final Translation2d AutoNav_Barrel_Race_thirdLoop_rightPoint = new Translation2d(Units.inches_to_meters(315), Units.inches_to_meters(60));
+        public static final Translation2d AutoNav_Barrel_Race_thirdLoop_topRightPoint = new Translation2d(Units.inches_to_meters(310), Units.inches_to_meters(80));
+        public static final Translation2d AutoNav_Barrel_Race_thirdLoop_topPoint = new Translation2d(Units.inches_to_meters(290), Units.inches_to_meters(85));
+        //triTouch once moer
+        public static final Translation2d AutoNav_Barrel_Race_EndZoneBreakPoint = new Translation2d(Units.inches_to_meters(60), Units.inches_to_meters(90));
+        public static final Pose2d AutoNav_Barrel_Race_END = new Pose2d(new Translation2d(Units.inches_to_meters(30), Units.inches_to_meters(90)), new Rotation2d(180));
+
+
+
+
+
+
+
+
+
+
+
+
 
         //AUTONAV SLALOM
         public static final Pose2d AutoNav_Slalom_START = new Pose2d(new Translation2d(Units.inches_to_meters(30), Units.inches_to_meters(30)), new Rotation2d(0));
         public static final Translation2d AutoNav_Slalom_intersectA = new Translation2d(Units.inches_to_meters(90), Units.inches_to_meters(57));
         public static final Translation2d AutoNav_Slalom_TopPointOne = new Translation2d(Units.inches_to_meters(120), Units.inches_to_meters(90));
         public static final Translation2d AutoNav_Slalom_TopPointTwo = new Translation2d(Units.inches_to_meters(180), Units.inches_to_meters(110));
-        public static final Translation2d AutoNav_Slalom_TopPointThree = new Translation2d(Units.inches_to_meters(250), Units.inches_to_meters(90));
-        public static final Translation2d AutoNav_Slalom_intersectB = new Translation2d(Units.inches_to_meters(270), Units.inches_to_meters(60));
+        public static final Translation2d AutoNav_Slalom_TopPointThree = new Translation2d(Units.inches_to_meters(260), Units.inches_to_meters(90));
+        public static final Translation2d AutoNav_Slalom_intersectB = new Translation2d(Units.inches_to_meters(275), Units.inches_to_meters(60));
         public static final Translation2d AutoNav_Slalom_ForwardLoopPointBottom = new Translation2d(Units.inches_to_meters(300), Units.inches_to_meters(30));
         public static final Translation2d AutoNav_Slalom_ForwardMostPoint = new Translation2d(Units.inches_to_meters(340), Units.inches_to_meters(60));
         public static final Translation2d AutoNav_Slalom_ForwardLoopPointTop = new Translation2d(Units.inches_to_meters(300), Units.inches_to_meters(90));
         //intersect B once more
-        public static final Translation2d AutoNav_Slalom_TopPointThree_Mirrored = new Translation2d(Units.inches_to_meters(260), Units.inches_to_meters(30));
+        public static final Translation2d AutoNav_Slalom_MirroredSetup = new Translation2d(Units.inches_to_meters(250), Units.inches_to_meters(35));
+        public static final Translation2d AutoNav_Slalom_TopPointThree_Mirrored = new Translation2d(Units.inches_to_meters(240), Units.inches_to_meters(30));
         public static final Translation2d AutoNav_Slalom_TopPointTwo_Mirrored = new Translation2d(Units.inches_to_meters(180), Units.inches_to_meters(30));
-        public static final Translation2d AutoNav_Slalom_TopPointOne_Mirrored = new Translation2d(Units.inches_to_meters(110), Units.inches_to_meters(35));
+        public static final Translation2d AutoNav_Slalom_TopPointOne_Mirrored = new Translation2d(Units.inches_to_meters(120), Units.inches_to_meters(35));
         //intersect A once more
         public static final Translation2d EndZoneBreakLine = new Translation2d(Units.inches_to_meters(60), Units.inches_to_meters(90));
         public static final Pose2d AutoNav_Slalom_END = new Pose2d(new Translation2d(Units.inches_to_meters(30), Units.inches_to_meters(90)), new Rotation2d(180));
@@ -413,18 +451,14 @@ public class Constants {
         public static final Translation2d BounceForwardsB_firstPoint = new Translation2d(Units.inches_to_meters(180), Units.inches_to_meters(90));
         public static final Translation2d BounceForwardsB_secondPoint = new Translation2d(Units.inches_to_meters(190), Units.inches_to_meters(50));
         public static final Translation2d BounceForwardsB_thirdPoint = new Translation2d(Units.inches_to_meters(220), Units.inches_to_meters(30));
-        public static final Translation2d BounceForwardsB_fourthPoint = new Translation2d(Units.inches_to_meters(260), Units.inches_to_meters(40));
-        public static final Translation2d BounceForwardsB_fifthPoint = new Translation2d(Units.inches_to_meters(265), Units.inches_to_meters(60));
+        public static final Translation2d BounceForwardsB_fourthPoint = new Translation2d(Units.inches_to_meters(265), Units.inches_to_meters(40));
+        public static final Translation2d BounceForwardsB_fifthPoint = new Translation2d(Units.inches_to_meters(270), Units.inches_to_meters(90));
         public static final Pose2d BounceForwardsB_END = new Pose2d(new Translation2d(Units.inches_to_meters(270), Units.inches_to_meters(150)), new Rotation2d(90));
         //forwardB to backwardA
         public static final Pose2d BounceBackwardsB_START = new Pose2d(new Translation2d(Units.inches_to_meters(270), Units.inches_to_meters(150)), new Rotation2d(Units.degrees_to_radians(90)));
         public static final Translation2d BounceBackwardsB_firstPoint = new Translation2d(Units.inches_to_meters(270), Units.inches_to_meters(120));
         public static final Translation2d BounceBackwardsB_secondPoint = new Translation2d(Units.inches_to_meters(300), Units.inches_to_meters(94));
         public static final Pose2d BounceBackwardsB_END = new Pose2d(new Translation2d(Units.inches_to_meters(330), Units.inches_to_meters(90)), new Rotation2d(Units.degrees_to_radians(180)));
-
-        public static final Pose2d testStart = new Pose2d(new Translation2d(Units.inches_to_meters(30), Units.inches_to_meters(90)), new Rotation2d(Units.degrees_to_radians(0)));
-        public static final Translation2d testMid = new Translation2d(Units.inches_to_meters(90), Units.inches_to_meters(90));
-        public static final Pose2d testEnd = new Pose2d(new Translation2d(Units.inches_to_meters(120), Units.inches_to_meters(90)), new Rotation2d(Units.degrees_to_radians(0)));
 
 
 

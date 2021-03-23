@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.RamseteCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import team3647.frc2020.autonomous.Trajectories;
+import team3647.frc2020.commands.AccelerateKickerFlywheel;
 import team3647.frc2020.commands.ArcadeDrive;
 import team3647.frc2020.commands.GoStraightDistancePID;
 import team3647.frc2020.commands.GroundIntake;
@@ -59,8 +60,6 @@ public class RobotContainer {
   Constants.cDrivetrain.kDriveKinematics, dt::setClosedLoopVelocity, dt);
   private final RamseteCommand GalaticSearch_PathB_Red_Movement = new RamseteCommand(Trajectories.GalaticSearch_B_RedTraject, dt::getRobotPose, new RamseteController(),
   Constants.cDrivetrain.kDriveKinematics, dt::setClosedLoopVelocity, dt);
-  private final RamseteCommand testMovement = new RamseteCommand(Trajectories.testPath, dt::getRobotPose, new RamseteController(),
-   Constants.cDrivetrain.kDriveKinematics, dt::setClosedLoopVelocity, dt);
 
   //AutoNav
   //Slalom
@@ -135,6 +134,10 @@ public class RobotContainer {
     coController.dPadUp.whenActive(new InstantCommand(() -> hood.setPosition(0.3)));
     coController.dPadLeft.whenActive(new InstantCommand(() -> hood.setPosition(0.6)));
     coController.dPadRight.whenActive(new InstantCommand(() -> hood.setPosition(1)));
+
+    //shooting
+    coController.buttonA.whenActive(new SequentialCommandGroup(new InstantCommand(() -> hood.setPosition(Constants.cShooting.hoodFlywheelKicker[0][0])),
+                                    new AccelerateKickerFlywheel(flywheel, kicker, Constants.cShooting.hoodFlywheelKicker[0][1], Constants.cShooting.hoodFlywheelKicker[0][2])));
 
     //automatic organize feeder
     coController.buttonA.whenHeld(new SequentialCommandGroup(new TunnelOut(m_Indexer), new TunnelIn(m_Indexer).withTimeout(0.5)));
