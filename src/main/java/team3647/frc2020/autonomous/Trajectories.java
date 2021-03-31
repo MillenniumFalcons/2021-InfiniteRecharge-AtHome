@@ -5,6 +5,7 @@ import java.util.List;
 
 import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.geometry.Pose2d;
+import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.wpilibj.trajectory.Trajectory;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryConfig;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator;
@@ -40,12 +41,18 @@ public class Trajectories {
        Constants.cField.GalaticSearch_B_Red_endingPoint, reverseTrajectoryConfig);
 
        public static Trajectory AutoNav_Slalom = TrajectoryGenerator.generateTrajectory(Constants.cField.AutoNav_Slalom_START,
-      Arrays.asList(Constants.cField.AutoNav_Slalom_intersectA, Constants.cField.AutoNav_Slalom_TopPointOne, Constants.cField.AutoNav_Slalom_TopPointTwo,
-       Constants.cField.AutoNav_Slalom_TopPointThree, Constants.cField.AutoNav_Slalom_intersectB, Constants.cField.AutoNav_Slalom_ForwardLoopPointBottom, 
-       Constants.cField.AutoNav_Slalom_ForwardMostPoint, Constants.cField.AutoNav_Slalom_ForwardLoopPointTop, Constants.cField.AutoNav_Slalom_intersectB, 
-       Constants.cField.AutoNav_Slalom_MirroredSetup, Constants.cField.AutoNav_Slalom_TopPointThree_Mirrored, Constants.cField.AutoNav_Slalom_TopPointTwo_Mirrored, Constants.cField.AutoNav_Slalom_TopPointOne_Mirrored,
-       Constants.cField.AutoNav_Slalom_intersectA, Constants.cField.EndZoneBreakLine),
+      Arrays.asList(Constants.cField.AutoNav_Slalom_A, Constants.cField.AutoNav_Slalom_B, Constants.cField.AutoNav_Slalom_C, Constants.cField.AutoNav_Slalom_D, Constants.cField.AutoNav_Slalom_E,
+      Constants.cField.AutoNav_Slalom_F, Constants.cField.AutoNav_Slalom_G, Constants.cField.AutoNav_Slalom_H,Constants.cField.AutoNav_Slalom_I, Constants.cField.AutoNav_Slalom_J, 
+      Constants.cField.AutoNav_Slalom_K, Constants.cField.AutoNav_Slalom_L, Constants.cField.AutoNav_Slalom_M, Constants.cField.AutoNav_Slalom_N, Constants.cField.AutoNav_Slalom_O, Constants.cField.AutoNav_Slalom_P),
       Constants.cField.AutoNav_Slalom_END, forwardTrajectoryConfig);
+
+      public static Trajectory AutoNav_BarrelRace = TrajectoryGenerator.generateTrajectory(Constants.cField.AutoNav_Barrel_Race_Start,
+      Arrays.asList(Constants.cField.AUTONAV_Barrel_Race_1, Constants.cField.AUTONAV_Barrel_Race_2, Constants.cField.AUTONAV_Barrel_Race_3,
+      Constants.cField.AUTONAV_Barrel_Race_4, Constants.cField.AUTONAV_Barrel_Race_5, Constants.cField.AUTONAV_Barrel_Race_6, Constants.cField.AUTONAV_Barrel_Race_7, 
+      Constants.cField.AUTONAV_Barrel_Race_8, Constants.cField.AUTONAV_Barrel_Race_9, Constants.cField.AUTONAV_Barrel_Race_10, Constants.cField.AUTONAV_Barrel_Race_11, 
+      Constants.cField.AUTONAV_Barrel_Race_12, Constants.cField.AUTONAV_Barrel_Race_13, Constants.cField.AUTONAV_Barrel_Race_14, Constants.cField.AUTONAV_Barrel_Race_15, 
+      Constants.cField.AUTONAV_Barrel_Race_16, Constants.cField.AUTONAV_Barrel_Race_17, Constants.cField.AUTONAV_Barrel_Race_18, Constants.cField.AUTONAV_Barrel_Race_19),
+      Constants.cField.AutoNav_Barrel_Race_END, forwardTrajectoryConfig);
 
       public static Trajectory AutoNav_Bounce_forwardA = TrajectoryGenerator.generateTrajectory(Constants.cField.BounceForwardA_START,
       Arrays.asList(Constants.cField.BounceForwardA_firstPoint),

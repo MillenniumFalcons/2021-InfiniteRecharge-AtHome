@@ -38,7 +38,7 @@ public class Robot extends TimedRobot {
     public void robotInit() {
         LiveWindow.disableAllTelemetry();
         lastMethod = LastMethod.kRobotInit;
-        m_robotContainer.setCoast();
+        
     }
 
     /**
@@ -117,4 +117,11 @@ public class Robot extends TimedRobot {
 
         lastMethod = LastMethod.kTesting;
     }
+
+    @Override
+    public void disabledInit() {
+        m_robotContainer.setCoast();
+    }
+
+
 }

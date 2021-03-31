@@ -30,6 +30,7 @@ import team3647.frc2020.subsystems.Hood;
 import team3647.frc2020.subsystems.HotDogIndexer;
 import team3647.frc2020.subsystems.Intake;
 import team3647.frc2020.subsystems.KickerWheel;
+import team3647.lib.GroupPrinter;
 import team3647.lib.wpi.Compressor;
 
 
@@ -43,6 +44,7 @@ public class RobotContainer {
   Constants.cDrivetrain.kV, Constants.cDrivetrain.kA);
 
   private final CommandScheduler m_commandScheduler = CommandScheduler.getInstance();
+  private final GroupPrinter printer = new GroupPrinter();
   private final Compressor airCompressor = new Compressor(0);
   private final Hood hood = new Hood(Constants.cHood.pwmPort);
   private final Intake intake = new Intake(Constants.cIntake.innerPistonsPin, Constants.cIntake.outerPistonsPin, Constants.cIntake.intakeMotorConfig);
@@ -62,6 +64,9 @@ public class RobotContainer {
   Constants.cDrivetrain.kDriveKinematics, dt::setClosedLoopVelocity, dt);
 
   //AutoNav
+  //BarrelRace
+  private final RamseteCommand AutoNav_BarrelRace_Movement = new RamseteCommand(Trajectories.AutoNav_BarrelRace, dt::getRobotPose, new RamseteController(),
+  Constants.cDrivetrain.kDriveKinematics, dt::setClosedLoopVelocity, dt);
   //Slalom
   private final RamseteCommand AutoNav_Slalom_Movement = new RamseteCommand(Trajectories.AutoNav_Slalom, dt::getRobotPose, new RamseteController(),
   Constants.cDrivetrain.kDriveKinematics, dt::setClosedLoopVelocity, dt);
@@ -94,16 +99,20 @@ public class RobotContainer {
     airCompressor.start();
     stopper.extend();
     configButtonBindings();
-    m_commandScheduler.registerSubsystem(dt, m_Indexer, intake, hood, kicker, flywheel);
+    //m_commandScheduler.registerSubsystem(dt, m_Indexer, intake, hood, kicker, flywheel);
+    m_commandScheduler.registerSubsystem(dt, printer);
     m_commandScheduler.setDefaultCommand(dt,
         new ArcadeDrive(dt, controller::getLeftStickY, controller::getRightStickX));
     m_commandScheduler.setDefaultCommand(m_Indexer, new IndexerManualMode(m_Indexer, controller::getRightStickY));
+    printer.addDouble("drivetain x", dt::getx);
+    printer.addDouble("drivetain y", dt::gety);
+    printer.addDouble("drivetain heading", dt::getHeading);
   }
 
   public void init(){
     dt.init();
     //GalaticSearchRedA dt init
-    dt.setOdometry(Trajectories.AutoNav_Slalom.getInitialPose(), new Rotation2d());
+    dt.setOdometry(Trajectories.AutoNav_BarrelRace.getInitialPose(), new Rotation2d());
     //GalaticSearchRedB
     //dt.setOdometry(Trajectories.GalaticSearch_B_RedTraject.getInitialPose(), new Rotation2d());
     //AutoNav Slalom
@@ -111,15 +120,15 @@ public class RobotContainer {
     //AutoNav Bounce
     //dt.setOdometry(Trajectories.AutoNav_Bounce_forwardA.getInitialPose(), new Rotation2d());
 
-    m_Indexer.init();
-    intake.init();
-    hood.init();
-    kicker.init();
-    flywheel.init();
+  //  m_Indexer.init();
+  //   intake.init();
+  //   hood.init();
+  //   kicker.init();
+  //   flywheel.init();
   }
 
   public Command getAutonomousCommand() {
-    return AutoNav_Slalom_Movement;
+    return AutoNav_BarrelRace_Movement;
   }
 
   public boolean getDrivetrainSlowed() {
@@ -157,6 +166,7 @@ public class RobotContainer {
 
   public void stopDrivetrain() {
     dt.end();
+    dt.setCoast();
   }
 
   public void setCoast() {

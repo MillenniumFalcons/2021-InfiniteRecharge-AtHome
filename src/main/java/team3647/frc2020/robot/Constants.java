@@ -52,7 +52,7 @@ public class Constants {
         public static final DifferentialDriveKinematics kDriveKinematics =
                 new DifferentialDriveKinematics(kTrackwidthMeters);
 
-        public static final double kMaxSpeedMetersPerSecond = 2;
+        public static final double kMaxSpeedMetersPerSecond = 1;
         public static final double kMaxAccelerationMetersPerSecondSquared = 2;
 
         public static final double maxVoltage = 11.0;
@@ -383,55 +383,49 @@ public class Constants {
 
         //AUTONAV Barrel Race
         public static final Pose2d AutoNav_Barrel_Race_Start = new Pose2d(new Translation2d(Units.inches_to_meters(30), Units.inches_to_meters(90)), new Rotation2d(0));
-        public static final Translation2d AutoNav_Barrel_Race_firstLoop_Setup = new Translation2d(Units.inches_to_meters(130), Units.inches_to_meters(100));
-        public static final Translation2d AutoNav_Barrel_Race_firstLoop_topPoint = new Translation2d(Units.inches_to_meters(150), Units.inches_to_meters(75));
-        public static final Translation2d AutoNav_Barrel_Race_firstLoop_rightPoint = new Translation2d(Units.inches_to_meters(165), Units.inches_to_meters(60));
-        public static final Translation2d AutoNav_Barrel_Race_firstLoop_lowPoint = new Translation2d(Units.inches_to_meters(150), Units.inches_to_meters(45));
-        public static final Translation2d AutoNav_Barrel_Race_firstLoop_leftPoint = new Translation2d(Units.inches_to_meters(135), Units.inches_to_meters(60));
-        public static final Translation2d AutoNav_Barrel_Race_firstLoop_topPointBack = new Translation2d(Units.inches_to_meters(150), Units.inches_to_meters(80));
-        public static final Translation2d AutoNav_Barrel_Race_triTouchPoint = new Translation2d(Units.inches_to_meters(225), Units.inches_to_meters(90));
-        public static final Translation2d AutoNav_Barrel_Race_secondLoop_rightPoint = new Translation2d(Units.inches_to_meters(270), Units.inches_to_meters(120));
-        public static final Translation2d AutoNav_Barrel_Race_secondLoop_topPoint = new Translation2d(Units.inches_to_meters(240), Units.inches_to_meters(35));
-        public static final Translation2d AutoNav_Barrel_Race_secondLoop_leftPoint = new Translation2d(Units.inches_to_meters(225), Units.inches_to_meters(120));
-        //triTouch point once more
-        public static final Translation2d AutoNav_Barrel_Race_thirdLoop_leftPoint = new Translation2d(Units.inches_to_meters(270), Units.inches_to_meters(40));
-        public static final Translation2d AutoNav_Barrel_Race_thirdLoop_bottomPoint = new Translation2d(Units.inches_to_meters(300), Units.inches_to_meters(40));
-        public static final Translation2d AutoNav_Barrel_Race_thirdLoop_rightPoint = new Translation2d(Units.inches_to_meters(315), Units.inches_to_meters(60));
-        public static final Translation2d AutoNav_Barrel_Race_thirdLoop_topRightPoint = new Translation2d(Units.inches_to_meters(310), Units.inches_to_meters(80));
-        public static final Translation2d AutoNav_Barrel_Race_thirdLoop_topPoint = new Translation2d(Units.inches_to_meters(290), Units.inches_to_meters(85));
-        //triTouch once moer
-        public static final Translation2d AutoNav_Barrel_Race_EndZoneBreakPoint = new Translation2d(Units.inches_to_meters(60), Units.inches_to_meters(90));
+        public static final Translation2d AUTONAV_Barrel_Race_1 = new Translation2d(Units.inches_to_meters(163.78), Units.inches_to_meters(92.13));
+        public static final Translation2d AUTONAV_Barrel_Race_2 = new Translation2d(Units.inches_to_meters(199.61), Units.inches_to_meters(60.63));
+        public static final Translation2d AUTONAV_Barrel_Race_3 = new Translation2d(Units.inches_to_meters(187.01), Units.inches_to_meters(29.13));
+        public static final Translation2d AUTONAV_Barrel_Race_4 = new Translation2d(Units.inches_to_meters(158.66), Units.inches_to_meters(20.87));
+        public static final Translation2d AUTONAV_Barrel_Race_5 = new Translation2d(Units.inches_to_meters(129.92), Units.inches_to_meters(40.55));
+        public static final Translation2d AUTONAV_Barrel_Race_6 = new Translation2d(Units.inches_to_meters(127.56), Units.inches_to_meters(71.26));
+        public static final Translation2d AUTONAV_Barrel_Race_7 = new Translation2d(Units.inches_to_meters(145.67), Units.inches_to_meters(89.76));
+        public static final Translation2d AUTONAV_Barrel_Race_8 = new Translation2d(Units.inches_to_meters(176.38), Units.inches_to_meters(92.13));
+        public static final Translation2d AUTONAV_Barrel_Race_9 = new Translation2d(Units.inches_to_meters(212.20), Units.inches_to_meters(91.34));
+        public static final Translation2d AUTONAV_Barrel_Race_10 = new Translation2d(Units.inches_to_meters(242.91), Units.inches_to_meters(101.97));
+        public static final Translation2d AUTONAV_Barrel_Race_11 = new Translation2d(Units.inches_to_meters(253.94), Units.inches_to_meters(127.17));
+        public static final Translation2d AUTONAV_Barrel_Race_12 = new Translation2d(Units.inches_to_meters(233.464693), Units.inches_to_meters(153.149689));
+        public static final Translation2d AUTONAV_Barrel_Race_13 = new Translation2d(Units.inches_to_meters(196.8505), Units.inches_to_meters(147.637875));
+        public static final Translation2d AUTONAV_Barrel_Race_14 = new Translation2d(Units.inches_to_meters(187.795377), Units.inches_to_meters(118.1103));
+        public static final Translation2d AUTONAV_Barrel_Race_15 = new Translation2d(Units.inches_to_meters(200.000108), Units.inches_to_meters(95.669343));
+        public static final Translation2d AUTONAV_Barrel_Race_16 = new Translation2d(Units.inches_to_meters(220), Units.inches_to_meters(60));
+        public static final Translation2d AUTONAV_Barrel_Race_17 = new Translation2d(Units.inches_to_meters(250), Units.inches_to_meters(40));
+        public static final Translation2d AUTONAV_Barrel_Race_18 = new Translation2d(Units.inches_to_meters(280), Units.inches_to_meters(30));
+        public static final Translation2d AUTONAV_Barrel_Race_19 = new Translation2d(Units.inches_to_meters(320), Units.inches_to_meters(35));
+        public static final Translation2d AUTONAV_Barrel_Race_20 = new Translation2d(Units.inches_to_meters(330), Units.inches_to_meters(60));
+        public static final Translation2d AUTONAV_Barrel_Race_21 = new Translation2d(Units.inches_to_meters(320), Units.inches_to_meters(75));
+        public static final Translation2d AUTONAV_Barrel_Race_22 = new Translation2d(Units.inches_to_meters(300), Units.inches_to_meters(90));
+        public static final Translation2d AUTONAV_Barrel_Race_23 = new Translation2d(Units.inches_to_meters(164), Units.inches_to_meters(92));
         public static final Pose2d AutoNav_Barrel_Race_END = new Pose2d(new Translation2d(Units.inches_to_meters(30), Units.inches_to_meters(90)), new Rotation2d(180));
-
-
-
-
-
-
-
-
-
-
-
-
 
         //AUTONAV SLALOM
         public static final Pose2d AutoNav_Slalom_START = new Pose2d(new Translation2d(Units.inches_to_meters(30), Units.inches_to_meters(30)), new Rotation2d(0));
-        public static final Translation2d AutoNav_Slalom_intersectA = new Translation2d(Units.inches_to_meters(90), Units.inches_to_meters(57));
-        public static final Translation2d AutoNav_Slalom_TopPointOne = new Translation2d(Units.inches_to_meters(120), Units.inches_to_meters(90));
-        public static final Translation2d AutoNav_Slalom_TopPointTwo = new Translation2d(Units.inches_to_meters(180), Units.inches_to_meters(110));
-        public static final Translation2d AutoNav_Slalom_TopPointThree = new Translation2d(Units.inches_to_meters(260), Units.inches_to_meters(90));
-        public static final Translation2d AutoNav_Slalom_intersectB = new Translation2d(Units.inches_to_meters(275), Units.inches_to_meters(60));
-        public static final Translation2d AutoNav_Slalom_ForwardLoopPointBottom = new Translation2d(Units.inches_to_meters(300), Units.inches_to_meters(30));
-        public static final Translation2d AutoNav_Slalom_ForwardMostPoint = new Translation2d(Units.inches_to_meters(340), Units.inches_to_meters(60));
-        public static final Translation2d AutoNav_Slalom_ForwardLoopPointTop = new Translation2d(Units.inches_to_meters(300), Units.inches_to_meters(90));
-        //intersect B once more
-        public static final Translation2d AutoNav_Slalom_MirroredSetup = new Translation2d(Units.inches_to_meters(250), Units.inches_to_meters(35));
-        public static final Translation2d AutoNav_Slalom_TopPointThree_Mirrored = new Translation2d(Units.inches_to_meters(240), Units.inches_to_meters(30));
-        public static final Translation2d AutoNav_Slalom_TopPointTwo_Mirrored = new Translation2d(Units.inches_to_meters(180), Units.inches_to_meters(30));
-        public static final Translation2d AutoNav_Slalom_TopPointOne_Mirrored = new Translation2d(Units.inches_to_meters(120), Units.inches_to_meters(35));
-        //intersect A once more
-        public static final Translation2d EndZoneBreakLine = new Translation2d(Units.inches_to_meters(60), Units.inches_to_meters(90));
+        public static final Translation2d AutoNav_Slalom_A= new Translation2d(2.194, 1.354);
+        public static final Translation2d AutoNav_Slalom_B = new Translation2d(3.161, 2.363);
+        public static final Translation2d AutoNav_Slalom_C = new Translation2d(4.593, 2.788);
+        public static final Translation2d AutoNav_Slalom_D = new Translation2d(6.42, 1.98);
+        public static final Translation2d AutoNav_Slalom_E = new Translation2d(7.192, 0.692);
+        public static final Translation2d AutoNav_Slalom_F = new Translation2d(8.402, 0.8);
+        public static final Translation2d AutoNav_Slalom_G = new Translation2d(8.702, 1.506);
+        public static final Translation2d AutoNav_Slalom_H = new Translation2d(7.934, 2.409);
+        public static final Translation2d AutoNav_Slalom_I = new Translation2d(7.163, 2.338);
+        public static final Translation2d AutoNav_Slalom_J = new Translation2d(6.92, 1.922);
+        public static final Translation2d AutoNav_Slalom_K = new Translation2d(6.666, 1.171);
+        public static final Translation2d AutoNav_Slalom_L = new Translation2d(5.967, 0.593);
+        public static final Translation2d AutoNav_Slalom_M = new Translation2d(4.695, 0.434);
+        public static final Translation2d AutoNav_Slalom_N = new Translation2d(2.988, 0.889);
+        public static final Translation2d AutoNav_Slalom_O = new Translation2d(2.083, 1.884);
+        public static final Translation2d AutoNav_Slalom_P = new Translation2d(1.556, 2.333);
         public static final Pose2d AutoNav_Slalom_END = new Pose2d(new Translation2d(Units.inches_to_meters(30), Units.inches_to_meters(90)), new Rotation2d(180));
 
         //AUTONAV BOUNCE
@@ -459,19 +453,6 @@ public class Constants {
         public static final Translation2d BounceBackwardsB_firstPoint = new Translation2d(Units.inches_to_meters(270), Units.inches_to_meters(120));
         public static final Translation2d BounceBackwardsB_secondPoint = new Translation2d(Units.inches_to_meters(300), Units.inches_to_meters(94));
         public static final Pose2d BounceBackwardsB_END = new Pose2d(new Translation2d(Units.inches_to_meters(330), Units.inches_to_meters(90)), new Rotation2d(Units.degrees_to_radians(180)));
-
-
-
-
-        
-        
-
-
-
-
-        
-
-
     }
 
     public static class cClimber {

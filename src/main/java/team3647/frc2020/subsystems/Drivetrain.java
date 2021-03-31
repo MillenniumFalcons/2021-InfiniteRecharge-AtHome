@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.geometry.Pose2d;
 import edu.wpi.first.wpilibj.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveOdometry;
+import edu.wpi.first.wpilibj.util.Units;
 import edu.wpi.first.wpiutil.math.MathUtil;
 import team3647.lib.drivers.ClosedLoopFactory;
 import team3647.lib.drivers.SparkMaxFactory;
@@ -240,6 +241,14 @@ public class Drivetrain implements PeriodicSubsystem {
     setOdometry(new Pose2d(), new Rotation2d());
   }
 
+  public double getx() {
+    return odometry.getPoseMeters().getX();
+  }
+
+  public double gety() {
+    return odometry.getPoseMeters().getY();
+  }
+
   public boolean getSlow() {
     return isSlowed;
   }
@@ -324,6 +333,9 @@ public class Drivetrain implements PeriodicSubsystem {
     //when its regeistered in the commandScheuler --> every command interation, this is called before the command
     PeriodicSubsystem.super.periodic();
     odometry.update(Rotation2d.fromDegrees(getHeading()), p_IO.leftPosition, p_IO.rightPosition);
+    // System.out.println("heading: " + p_IO.heading);
+    // System.out.println("x: " + Units.metersToInches(odometry.getPoseMeters().getX()));
+    // System.out.println("Y: " + Units.metersToInches(odometry.getPoseMeters().getY()));
   }
 
   @Override
