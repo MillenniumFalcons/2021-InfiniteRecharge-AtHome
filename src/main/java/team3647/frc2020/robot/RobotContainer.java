@@ -166,7 +166,7 @@ public class RobotContainer {
 
   public void stopDrivetrain() {
     dt.end();
-    dt.setCoast();
+    dt.setBrake();
   }
 
   public void setCoast() {

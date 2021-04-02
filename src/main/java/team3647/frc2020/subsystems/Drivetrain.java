@@ -242,11 +242,11 @@ public class Drivetrain implements PeriodicSubsystem {
   }
 
   public double getx() {
-    return odometry.getPoseMeters().getX();
+    return Units.metersToInches(odometry.getPoseMeters().getX());
   }
 
   public double gety() {
-    return odometry.getPoseMeters().getY();
+    return Units.metersToInches(odometry.getPoseMeters().getY());
   }
 
   public boolean getSlow() {

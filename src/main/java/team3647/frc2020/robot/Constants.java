@@ -52,7 +52,7 @@ public class Constants {
         public static final DifferentialDriveKinematics kDriveKinematics =
                 new DifferentialDriveKinematics(kTrackwidthMeters);
 
-        public static final double kMaxSpeedMetersPerSecond = 1;
+        public static final double kMaxSpeedMetersPerSecond = 3;
         public static final double kMaxAccelerationMetersPerSecondSquared = 2;
 
         public static final double maxVoltage = 11.0;
@@ -369,12 +369,13 @@ public class Constants {
     }
 
     public static class cField {
+        //Galatic Search Red A
         public static final Pose2d GalaticSearch_A_Red_startingPoint = new Pose2d(new Translation2d(Units.inches_to_meters(30), Units.inches_to_meters(150)), new Rotation2d(Units.degrees_to_radians(180)));
         public static final Translation2d GalaticSearch_A_Red_firstBall = new Translation2d(Units.inches_to_meters(90), Units.inches_to_meters(90));
         public static final Translation2d GalaticSearch_A_Red_secondBall = new Translation2d(Units.inches_to_meters(153), Units.inches_to_meters(60));
         public static final Translation2d GalaticSearch_A_Red_thirdBall = new Translation2d(Units.inches_to_meters(180), Units.inches_to_meters(140));
         public static final Pose2d GalaticSearch_A_Red_endingPoint = new Pose2d(new Translation2d(Units.inches_to_meters(330), Units.inches_to_meters(150)), new Rotation2d(Units.degrees_to_radians(180)));
-
+        //Galatic Search Red B
         public static final Pose2d GalaticSearch_B_Red_startingPoint = new Pose2d(new Translation2d(Units.inches_to_meters(30), Units.inches_to_meters(150)), new Rotation2d(Units.degrees_to_radians(180)));
         public static final Translation2d GalaticSearch_B_Red_firstBall = new Translation2d(Units.inches_to_meters(90), Units.inches_to_meters(120));
         public static final Translation2d GalaticSearch_B_Red_secondBall = new Translation2d(Units.inches_to_meters(150), Units.inches_to_meters(60));
@@ -391,21 +392,23 @@ public class Constants {
         public static final Translation2d AUTONAV_Barrel_Race_6 = new Translation2d(Units.inches_to_meters(127.56), Units.inches_to_meters(71.26));
         public static final Translation2d AUTONAV_Barrel_Race_7 = new Translation2d(Units.inches_to_meters(145.67), Units.inches_to_meters(89.76));
         public static final Translation2d AUTONAV_Barrel_Race_8 = new Translation2d(Units.inches_to_meters(176.38), Units.inches_to_meters(92.13));
-        public static final Translation2d AUTONAV_Barrel_Race_9 = new Translation2d(Units.inches_to_meters(212.20), Units.inches_to_meters(91.34));
-        public static final Translation2d AUTONAV_Barrel_Race_10 = new Translation2d(Units.inches_to_meters(242.91), Units.inches_to_meters(101.97));
-        public static final Translation2d AUTONAV_Barrel_Race_11 = new Translation2d(Units.inches_to_meters(253.94), Units.inches_to_meters(127.17));
-        public static final Translation2d AUTONAV_Barrel_Race_12 = new Translation2d(Units.inches_to_meters(233.464693), Units.inches_to_meters(153.149689));
-        public static final Translation2d AUTONAV_Barrel_Race_13 = new Translation2d(Units.inches_to_meters(196.8505), Units.inches_to_meters(147.637875));
-        public static final Translation2d AUTONAV_Barrel_Race_14 = new Translation2d(Units.inches_to_meters(187.795377), Units.inches_to_meters(118.1103));
-        public static final Translation2d AUTONAV_Barrel_Race_15 = new Translation2d(Units.inches_to_meters(200.000108), Units.inches_to_meters(95.669343));
+        public static final Translation2d AUTONAV_Barrel_Race_9 = new Translation2d(Units.inches_to_meters(210), Units.inches_to_meters(90));
+        public static final Translation2d AUTONAV_Barrel_Race_10 = new Translation2d(Units.inches_to_meters(240), Units.inches_to_meters(95));
+        public static final Translation2d AUTONAV_Barrel_Race_11 = new Translation2d(Units.inches_to_meters(270), Units.inches_to_meters(125));
+        public static final Translation2d AUTONAV_Barrel_Race_12 = new Translation2d(Units.inches_to_meters(240), Units.inches_to_meters(160));
+        public static final Translation2d AUTONAV_Barrel_Race_13 = new Translation2d(Units.inches_to_meters(210), Units.inches_to_meters(135));
+        public static final Translation2d AUTONAV_Barrel_Race_14 = new Translation2d(Units.inches_to_meters(200), Units.inches_to_meters(100));
+        public static final Translation2d AUTONAV_Barrel_Race_15 = new Translation2d(Units.inches_to_meters(205), Units.inches_to_meters(75));
         public static final Translation2d AUTONAV_Barrel_Race_16 = new Translation2d(Units.inches_to_meters(220), Units.inches_to_meters(60));
         public static final Translation2d AUTONAV_Barrel_Race_17 = new Translation2d(Units.inches_to_meters(250), Units.inches_to_meters(40));
         public static final Translation2d AUTONAV_Barrel_Race_18 = new Translation2d(Units.inches_to_meters(280), Units.inches_to_meters(30));
         public static final Translation2d AUTONAV_Barrel_Race_19 = new Translation2d(Units.inches_to_meters(320), Units.inches_to_meters(35));
-        public static final Translation2d AUTONAV_Barrel_Race_20 = new Translation2d(Units.inches_to_meters(330), Units.inches_to_meters(60));
-        public static final Translation2d AUTONAV_Barrel_Race_21 = new Translation2d(Units.inches_to_meters(320), Units.inches_to_meters(75));
-        public static final Translation2d AUTONAV_Barrel_Race_22 = new Translation2d(Units.inches_to_meters(300), Units.inches_to_meters(90));
-        public static final Translation2d AUTONAV_Barrel_Race_23 = new Translation2d(Units.inches_to_meters(164), Units.inches_to_meters(92));
+        public static final Translation2d AUTONAV_Barrel_Race_20 = new Translation2d(Units.inches_to_meters(335), Units.inches_to_meters(60));
+        public static final Translation2d AUTONAV_Barrel_Race_21 = new Translation2d(Units.inches_to_meters(300), Units.inches_to_meters(90));
+        public static final Translation2d AUTONAV_Barrel_Race_22 = new Translation2d(Units.inches_to_meters(180), Units.inches_to_meters(90));
+        public static final Translation2d AUTONAV_Barrel_Race_23 = new Translation2d(Units.inches_to_meters(90), Units.inches_to_meters(90));
+
+
         public static final Pose2d AutoNav_Barrel_Race_END = new Pose2d(new Translation2d(Units.inches_to_meters(30), Units.inches_to_meters(90)), new Rotation2d(180));
 
         //AUTONAV SLALOM

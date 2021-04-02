@@ -51,7 +51,8 @@ public class Trajectories {
       Constants.cField.AUTONAV_Barrel_Race_4, Constants.cField.AUTONAV_Barrel_Race_5, Constants.cField.AUTONAV_Barrel_Race_6, Constants.cField.AUTONAV_Barrel_Race_7, 
       Constants.cField.AUTONAV_Barrel_Race_8, Constants.cField.AUTONAV_Barrel_Race_9, Constants.cField.AUTONAV_Barrel_Race_10, Constants.cField.AUTONAV_Barrel_Race_11, 
       Constants.cField.AUTONAV_Barrel_Race_12, Constants.cField.AUTONAV_Barrel_Race_13, Constants.cField.AUTONAV_Barrel_Race_14, Constants.cField.AUTONAV_Barrel_Race_15, 
-      Constants.cField.AUTONAV_Barrel_Race_16, Constants.cField.AUTONAV_Barrel_Race_17, Constants.cField.AUTONAV_Barrel_Race_18, Constants.cField.AUTONAV_Barrel_Race_19),
+      Constants.cField.AUTONAV_Barrel_Race_16, Constants.cField.AUTONAV_Barrel_Race_17, Constants.cField.AUTONAV_Barrel_Race_18, Constants.cField.AUTONAV_Barrel_Race_19,
+      Constants.cField.AUTONAV_Barrel_Race_20, Constants.cField.AUTONAV_Barrel_Race_21, Constants.cField.AUTONAV_Barrel_Race_22, Constants.cField.AUTONAV_Barrel_Race_23),
       Constants.cField.AutoNav_Barrel_Race_END, forwardTrajectoryConfig);
 
       public static Trajectory AutoNav_Bounce_forwardA = TrajectoryGenerator.generateTrajectory(Constants.cField.BounceForwardA_START,
