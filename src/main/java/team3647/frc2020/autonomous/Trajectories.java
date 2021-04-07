@@ -56,7 +56,7 @@ public class Trajectories {
       Constants.cField.AutoNav_Barrel_Race_END, forwardTrajectoryConfig);
 
       public static Trajectory AutoNav_Bounce_forwardA = TrajectoryGenerator.generateTrajectory(Constants.cField.BounceForwardA_START,
-      Arrays.asList(Constants.cField.BounceForwardA_firstPoint),
+      Arrays.asList(Constants.cField.BounceForwardA_firstPoint, Constants.cField.BounceForwardA_secondPoint),
        Constants.cField.BounceForwardA_END, forwardTrajectoryConfig);
 
        public static Trajectory AutoNav_Bounce_backwardA = TrajectoryGenerator.generateTrajectory(Constants.cField.BounceBackwardsA_START,
