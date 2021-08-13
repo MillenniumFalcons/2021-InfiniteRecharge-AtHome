@@ -49,7 +49,7 @@ public class RobotContainer {
   private final Hood hood = new Hood(Constants.cHood.pwmPort);
   private final Intake intake = new Intake(Constants.cIntake.innerPistonsPin, Constants.cIntake.outerPistonsPin, Constants.cIntake.intakeMotorConfig);
   private final BallStopper stopper = new BallStopper(Constants.cBallStopper.solenoidPin);
-  private final HotDogIndexer m_Indexer = new HotDogIndexer(Constants.cIndexer.rightRollersConfig, Constants.cIndexer.leftRollersConfig, Constants.cIndexer.horizontalRollersConfig, Constants.cIndexer.tunnelConfig, Constants.cIndexer.bannerSensorPin);
+  private final HotDogIndexer m_Indexer = new HotDogIndexer(Constants.cIndexer.horizontalRollersConfig, Constants.cIndexer.tunnelConfig, Constants.cIndexer.bannerSensorPin);
   private final KickerWheel kicker = new KickerWheel(Constants.cKickerWheel.masterConfig, Constants.cKickerWheel.pidConfig);
   private final Flywheel flywheel = new Flywheel(Constants.cFlywheel.masterConfig, Constants.cFlywheel.slaveConfig, Constants.cFlywheel.pidConfig);
   //public final Command autonomousCommand = new GoStraightDistance(dt, 10);
@@ -162,6 +162,9 @@ public class RobotContainer {
     coController.leftTrigger.whenReleased(new StowIntake(intake).withTimeout(0.5));
     // tacobell
     coController.rightTrigger.whenActive(new ParallelCommandGroup(new TacoBell(intake), new TunnelOut(m_Indexer)));
+
+
+    
   }
 
   public void stopDrivetrain() {
