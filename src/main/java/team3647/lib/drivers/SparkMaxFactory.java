@@ -49,7 +49,9 @@ public class SparkMaxFactory {
         }
 
         public static Configuration mirrorWithCANID(Configuration config, int CANID) {
-            return new Configuration(CANID, config.inverted).currentLimiting(config.enableCurrentLimiting, config.maxFreeSpeedCurrent, config.maxStallCurrent).voltageCompensation(config.voltageCompensation, config.nominalVoltage).idleMode(config.idleMode);
+            return new Configuration(CANID, config.inverted)
+                    .currentLimiting(config.enableCurrentLimiting, config.maxFreeSpeedCurrent, config.maxStallCurrent)
+                    .voltageCompensation(config.voltageCompensation, config.nominalVoltage).idleMode(config.idleMode);
         }
     }
 

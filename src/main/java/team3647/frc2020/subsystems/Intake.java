@@ -1,91 +1,72 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2018-2019 FIRST. All Rights Reserved. */
+/* Open Source Software - may be modified and shared by FRC teams. The code */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project. */
+/*----------------------------------------------------------------------------*/
+
 package team3647.frc2020.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-
 import team3647.lib.drivers.TalonSRXFactory;
 import team3647.lib.wpi.Solenoid;
 
+/**
+ * Intake fuel cells from everywhere.
+ */
 public class Intake implements PeriodicSubsystem {
-    private final Solenoid inner;
-    private final Solenoid outer;
+
+    private final Solenoid innerPistons;
+    private final Solenoid outerPistons;
+
     private final TalonSRX intakeMotor;
-    private IntakeState state;
 
-    public Intake(int innerPairPin, int outerPairPin, TalonSRXFactory.Configuration intakeMotorConfig) {
-        this.inner = new Solenoid(innerPairPin);
-        this.outer = new Solenoid(outerPairPin);
-        this.intakeMotor = TalonSRXFactory.createTalon(intakeMotorConfig);
-    }
-
-    public enum IntakeState {
-        GROUND(true, true, -0.7), LOADING_STATION(true, false, 0), TACOBELL(false, true, -0.5), STOWED(false, false, 0);
-
-        public final boolean innerCond;
-        public final boolean outerCond;
-        public final double motorDemand;
-
-        IntakeState(boolean innerExtend, boolean outerExtend, double motorDemand) {
-            this.innerCond = innerExtend;
-            this.outerCond = outerExtend;
-            this.motorDemand = motorDemand;
+    public Intake(TalonSRXFactory.Configuration intakeMotorConfig, int innerPistonsPin,
+            int outerPistonsPin) {
+        if (intakeMotorConfig == null) {
+            throw new NullPointerException("Intake motor config was null");
         }
-
+        intakeMotor = TalonSRXFactory.createTalon(intakeMotorConfig);
+        innerPistons = new Solenoid(innerPistonsPin);
+        outerPistons = new Solenoid(outerPistonsPin);
     }
 
-    public void setIntakeMode(IntakeState state) {
-        this.state = state;
-    }
-
-    public void moveInner() {
-        inner.set(state.innerCond);
-    }
-
-    public void moveOuter() {
-        outer.set(state.outerCond);
-    }
-
-    public void retractInner() {
-        inner.set(false);
-    }
-    public void extendInner() {
-        inner.set(true);
+    public void extendOuter() {
+        outerPistons.set(true);
     }
 
     public void retractOuter() {
-        inner.set(true);
+        outerPistons.set(false);
     }
 
-    public void spinIntakeMotor() {
-        setOpenLoop(state.motorDemand);
+    public void extendInner() {
+        innerPistons.set(true);
     }
 
-    public void setOpenLoop(double demand) {
-        this.intakeMotor.set(ControlMode.PercentOutput, demand);
+    public void retractInner() {
+        innerPistons.set(false);
     }
 
-    @Override
-    public void readPeriodicInputs() {
-        // TODO Auto-generated method stub
-        PeriodicSubsystem.super.readPeriodicInputs();
+    private void setOpenLoop(double demand) {
+        intakeMotor.set(ControlMode.PercentOutput, demand);
     }
 
-    @Override
-    public void writePeriodicOutputs() {
-        // TODO Auto-generated method stub
-        PeriodicSubsystem.super.writePeriodicOutputs();
+    public void intake(double demand) {
+        setOpenLoop(-demand);
+    }
+
+    public void spitOut(double demand) {
+        setOpenLoop(demand);
     }
 
     @Override
     public void end() {
-        // TODO Auto-generated method stub
-        PeriodicSubsystem.super.end();
+        setOpenLoop(0);
     }
 
     @Override
     public String getName() {
-        // TODO Auto-generated method stub
         return "Intake";
     }
-    
 }

@@ -12,27 +12,23 @@ import team3647.lib.wpi.Solenoid;
 /**
  * Add your docs here.
  */
-public class BallStopper implements PeriodicSubsystem {
-    private final Solenoid stopPistons;
+public class Climber implements PeriodicSubsystem {
+    private final Solenoid climberRelease;
 
-    public BallStopper(int solenoidPin) {
-        stopPistons = new Solenoid(solenoidPin);
+    public Climber(int solenoidPin) {
+        climberRelease = new Solenoid(solenoidPin);
     }
 
-    public void extend() {
-        set(true);
+    public void release() {
+        climberRelease.set(true);
     }
 
-    public void retract() {
-        set(false);
-    }
-
-    public void set(boolean value) {
-        stopPistons.set(value);
+    public void lock() {
+        climberRelease.set(false);
     }
 
     @Override
     public String getName() {
-        return "BallStopper";
+        return "Climber";
     }
 }

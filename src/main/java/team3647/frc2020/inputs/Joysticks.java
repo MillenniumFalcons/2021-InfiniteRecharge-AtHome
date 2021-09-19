@@ -1,3 +1,10 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2018-2019 FIRST. All Rights Reserved. */
+/* Open Source Software - may be modified and shared by FRC teams. The code */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project. */
+/*----------------------------------------------------------------------------*/
+
 package team3647.frc2020.inputs;
 
 import edu.wpi.first.wpilibj.XboxController;
@@ -5,6 +12,9 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import team3647.lib.wpi.JoystickTrigger;
 
+/**
+ * Add your docs here.
+ */
 public class Joysticks {
     public final JoystickTrigger leftTrigger;
     public final JoystickTrigger rightTrigger;
@@ -109,3 +119,4 @@ public class Joysticks {
         return controllerPin;
     }
 }
+

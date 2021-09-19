@@ -1,78 +1,120 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2018-2019 FIRST. All Rights Reserved. */
+/* Open Source Software - may be modified and shared by FRC teams. The code */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project. */
+/*----------------------------------------------------------------------------*/
+
 package team3647.frc2020.autonomous;
 
-import java.util.Arrays;
 import java.util.List;
 
 import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.geometry.Pose2d;
-import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
+import edu.wpi.first.wpilibj.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.geometry.Translation2d;
 import edu.wpi.first.wpilibj.trajectory.Trajectory;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryConfig;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.trajectory.constraint.DifferentialDriveVoltageConstraint;
 import team3647.frc2020.robot.Constants;
+import team3647.lib.util.Units;
+import static team3647.frc2020.robot.Constants.cField;
 
+/**
+ * Add your docs here.
+ */
 public class Trajectories {
+
     private static final DifferentialDriveVoltageConstraint autoVoltageConstraint =
             new DifferentialDriveVoltageConstraint(
-            new SimpleMotorFeedforward(Constants.cDrivetrain.kS, Constants.cDrivetrain.kV,
-            Constants.cDrivetrain.kA), Constants.cDrivetrain.kDriveKinematics, Constants.cDrivetrain.maxVoltage);     
-    
+                    new SimpleMotorFeedforward(Constants.cDrivetrain.kS, Constants.cDrivetrain.kV,
+                            Constants.cDrivetrain.kA),
+                    Constants.cDrivetrain.kDriveKinematics, Constants.cDrivetrain.maxVoltage);
+
+    // Create config for trajectory
     private static final TrajectoryConfig forwardTrajectoryConfig =
             new TrajectoryConfig(Constants.cDrivetrain.kMaxSpeedMetersPerSecond,
-            Constants.cDrivetrain.kMaxAccelerationMetersPerSecondSquared).setKinematics(Constants.cDrivetrain.kDriveKinematics)
-            .addConstraint(autoVoltageConstraint).setReversed(false);
+                    Constants.cDrivetrain.kMaxAccelerationMetersPerSecondSquared)
+                            // Add kinematics to ensure max speed is actually obeyed
+                            .setKinematics(Constants.cDrivetrain.kDriveKinematics)
+                            // Apply the voltage constraint
+                            .addConstraint(autoVoltageConstraint).setReversed(false);
 
     private static final TrajectoryConfig reverseTrajectoryConfig =
-        new TrajectoryConfig(Constants.cDrivetrain.kMaxSpeedMetersPerSecond,
-                Constants.cDrivetrain.kMaxAccelerationMetersPerSecondSquared)
-                        // Add kinematics to ensure max speed is actually obeyed
-                        .setKinematics(Constants.cDrivetrain.kDriveKinematics)
-                        // Apply the voltage constraint
-                        .addConstraint(autoVoltageConstraint).setReversed(true);
-    
+            new TrajectoryConfig(Constants.cDrivetrain.kMaxSpeedMetersPerSecond,
+                    Constants.cDrivetrain.kMaxAccelerationMetersPerSecondSquared)
+                            // Add kinematics to ensure max speed is actually obeyed
+                            .setKinematics(Constants.cDrivetrain.kDriveKinematics)
+                            // Apply the voltage constraint
+                            .addConstraint(autoVoltageConstraint).setReversed(true);
 
-    public static Trajectory GalaticSearch_A_RedTraject = TrajectoryGenerator.generateTrajectory(Constants.cField.GalaticSearch_A_Red_startingPoint,
-    Arrays.asList(Constants.cField.GalaticSearch_A_Red_firstBall, Constants.cField.GalaticSearch_A_Red_secondBall, Constants.cField.GalaticSearch_A_Red_thirdBall),
-     Constants.cField.GalaticSearch_A_Red_endingPoint, reverseTrajectoryConfig);
+    public static Trajectory initiationLineToTrenchBalls = TrajectoryGenerator.generateTrajectory(
+            cField.startingPositionForTrenchRun, List.of(cField.trenchBall1, cField.trenchBall2),
+            new Pose2d(cField.trenchBall3, cField.startingPositionForTrenchRun.getRotation()),
+            reverseTrajectoryConfig);
 
-     public static Trajectory GalaticSearch_B_RedTraject = TrajectoryGenerator.generateTrajectory(Constants.cField.GalaticSearch_B_Red_startingPoint,
-      Arrays.asList(Constants.cField.GalaticSearch_B_Red_firstBall, Constants.cField.GalaticSearch_B_Red_secondBall, Constants.cField.GalaticSearch_B_Red_thirdBall),
-       Constants.cField.GalaticSearch_B_Red_endingPoint, reverseTrajectoryConfig);
-
-       public static Trajectory AutoNav_Slalom = TrajectoryGenerator.generateTrajectory(Constants.cField.AutoNav_Slalom_START,
-      Arrays.asList(Constants.cField.AutoNav_Slalom_A, Constants.cField.AutoNav_Slalom_B, Constants.cField.AutoNav_Slalom_C, Constants.cField.AutoNav_Slalom_D, Constants.cField.AutoNav_Slalom_E,
-      Constants.cField.AutoNav_Slalom_F, Constants.cField.AutoNav_Slalom_G, Constants.cField.AutoNav_Slalom_H,Constants.cField.AutoNav_Slalom_I, Constants.cField.AutoNav_Slalom_J, 
-      Constants.cField.AutoNav_Slalom_K, Constants.cField.AutoNav_Slalom_L, Constants.cField.AutoNav_Slalom_M, Constants.cField.AutoNav_Slalom_N, Constants.cField.AutoNav_Slalom_O, Constants.cField.AutoNav_Slalom_P),
-      Constants.cField.AutoNav_Slalom_END, forwardTrajectoryConfig);
-
-      public static Trajectory AutoNav_BarrelRace = TrajectoryGenerator.generateTrajectory(Constants.cField.AutoNav_Barrel_Race_Start,
-      Arrays.asList(Constants.cField.AUTONAV_Barrel_Race_1, Constants.cField.AUTONAV_Barrel_Race_2, Constants.cField.AUTONAV_Barrel_Race_3,
-      Constants.cField.AUTONAV_Barrel_Race_4, Constants.cField.AUTONAV_Barrel_Race_5, Constants.cField.AUTONAV_Barrel_Race_6, Constants.cField.AUTONAV_Barrel_Race_7, 
-      Constants.cField.AUTONAV_Barrel_Race_8, Constants.cField.AUTONAV_Barrel_Race_9, Constants.cField.AUTONAV_Barrel_Race_10, Constants.cField.AUTONAV_Barrel_Race_11, 
-      Constants.cField.AUTONAV_Barrel_Race_12, Constants.cField.AUTONAV_Barrel_Race_13, Constants.cField.AUTONAV_Barrel_Race_14, Constants.cField.AUTONAV_Barrel_Race_15, 
-      Constants.cField.AUTONAV_Barrel_Race_16, Constants.cField.AUTONAV_Barrel_Race_17, Constants.cField.AUTONAV_Barrel_Race_18, Constants.cField.AUTONAV_Barrel_Race_19,
-      Constants.cField.AUTONAV_Barrel_Race_20, Constants.cField.AUTONAV_Barrel_Race_21, Constants.cField.AUTONAV_Barrel_Race_22, Constants.cField.AUTONAV_Barrel_Race_23),
-      Constants.cField.AutoNav_Barrel_Race_END, forwardTrajectoryConfig);
-
-      public static Trajectory AutoNav_Bounce_forwardA = TrajectoryGenerator.generateTrajectory(Constants.cField.BounceForwardA_START,
-      Arrays.asList(Constants.cField.BounceForwardA_firstPoint, Constants.cField.BounceForwardA_secondPoint),
-       Constants.cField.BounceForwardA_END, forwardTrajectoryConfig);
-
-       public static Trajectory AutoNav_Bounce_backwardA = TrajectoryGenerator.generateTrajectory(Constants.cField.BounceBackwardsA_START,
-      Arrays.asList(Constants.cField.BounceBackwardsA_Setup, Constants.cField.BounceBackwardsA_firstPoint, Constants.cField.BounceBackwardsA_secondPoint),
-       Constants.cField.BounceBackwardsA_END, reverseTrajectoryConfig);
-
-       public static Trajectory AutoNav_Bounce_forwardsB = TrajectoryGenerator.generateTrajectory(Constants.cField.BounceForwardB_START,
-      Arrays.asList(Constants.cField.BounceForwardsB_firstPoint, Constants.cField.BounceForwardsB_secondPoint,
-      Constants.cField.BounceForwardsB_thirdPoint, Constants.cField.BounceForwardsB_fourthPoint, Constants.cField.BounceForwardsB_fifthPoint),
-       Constants.cField.BounceForwardsB_END, forwardTrajectoryConfig);
-
-       public static Trajectory AutoNav_Bounce_backwardB = TrajectoryGenerator.generateTrajectory(Constants.cField.BounceBackwardsB_START,
-      Arrays.asList(Constants.cField.BounceBackwardsB_firstPoint, Constants.cField.BounceBackwardsB_secondPoint),
-       Constants.cField.BounceBackwardsB_END, reverseTrajectoryConfig);
+    public static Trajectory trenchBall3ToFrontOfTower = TrajectoryGenerator.generateTrajectory(
+            new Pose2d(cField.trenchBall3, new Rotation2d(0)), List.of(),
+            new Pose2d(cField.initiationFrontOfTower, new Rotation2d(0)), forwardTrajectoryConfig);
 
 
+    // ------------------
+    public static Trajectory bumpersInFrontOfTowerToRendezvousBalls =
+            TrajectoryGenerator.generateTrajectory(cField.robotInFrontOfTargetInitLine, List.of(),
+                    cField.getBallsFromRendezvousPosition, reverseTrajectoryConfig);
 
+    public static Trajectory toMidPointOnWayToTrenchBalls =
+            TrajectoryGenerator.generateTrajectory(cField.getBallsFromRendezvousPosition, List.of(),
+                    cField.poseBetweenRendezvousAndTrench, forwardTrajectoryConfig);
 
+    public static Trajectory midPointToTrenchBalls = TrajectoryGenerator.generateTrajectory(
+            cField.poseBetweenRendezvousAndTrench, List.of(cField.trenchBall1, cField.trenchBall2),
+            new Pose2d(cField.trenchBall3, new Rotation2d(0)), reverseTrajectoryConfig);
+    // ---------------
+
+    public static Trajectory initLineToOpponentTrenchBalls = TrajectoryGenerator.generateTrajectory(
+            new Pose2d(cField.pointOnInitLineInFrontOfOpponentTrench
+                    .minus(new Translation2d(cField.widthOfBumpers, 0)), new Rotation2d()),
+            List.of(), new Pose2d(cField.pointOnOpponentTrenchForTwoBalls, new Rotation2d()),
+            reverseTrajectoryConfig);
+
+    public static Trajectory opponentTrenchBallsToShootingLocation =
+            TrajectoryGenerator.generateTrajectory(
+                    new Pose2d(cField.pointOnOpponentTrenchForTwoBalls, new Rotation2d()),
+                    List.of(),
+                    new Pose2d(cField.pointToShootBallsFrom,
+                            new Rotation2d(Units.degrees_to_radians(-90))),
+                    forwardTrajectoryConfig);
+
+    public static Trajectory shootingPositionToRendezvous2Balls =
+            TrajectoryGenerator.generateTrajectory(
+                    new Pose2d(cField.pointToShootBallsFrom,
+                            new Rotation2d(Units.degrees_to_radians(-90))),
+                    List.of(), new Pose2d(cField.pointToIntakeTwoBallsFromRendezvous,
+                            cField.angleOfRendezvousForThreeBalls),
+                    reverseTrajectoryConfig);
+
+    public static Trajectory rendezvous2BallsToMidPoint = TrajectoryGenerator.generateTrajectory(
+            new Pose2d(cField.pointToIntakeTwoBallsFromRendezvous,
+                    cField.angleOfRendezvousForThreeBalls),
+            List.of(), new Pose2d(cField.pointBeforeIntakeLastBallOnRendezvous,
+                    cField.angleOfRendezvousForThreeBalls),
+            forwardTrajectoryConfig);
+
+    public static Trajectory midPointToRendezvousLastBall = TrajectoryGenerator.generateTrajectory(
+            new Pose2d(cField.pointBeforeIntakeLastBallOnRendezvous,
+                    cField.angleOfRendezvousForThreeBalls),
+            List.of(), new Pose2d(cField.pointForIntakeLastBallOnRendezvous,
+                    cField.angleOfRendezvousForThreeBalls),
+            reverseTrajectoryConfig);
+
+    public static Trajectory rendezvousLastBallToShootingPosition =
+            TrajectoryGenerator.generateTrajectory(
+                    new Pose2d(cField.pointForIntakeLastBallOnRendezvous,
+                            cField.angleOfRendezvousForThreeBalls),
+                    List.of(),
+                    new Pose2d(cField.pointToShootBallsFrom,
+                            new Rotation2d(Units.degrees_to_radians(-90))),
+                    forwardTrajectoryConfig);
 }

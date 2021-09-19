@@ -7,32 +7,45 @@
 
 package team3647.frc2020.commands;
 
+import java.util.function.DoubleSupplier;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import team3647.frc2020.subsystems.Intake;
+import team3647.frc2020.subsystems.Hood;
 
-public class LoadingStationIntake extends CommandBase {
-    private final Intake m_intake;
+public class MoveHood extends CommandBase {
+    private final Hood m_hood;
+    private final DoubleSupplier hoodPosition;
 
     /**
-     * Creates a new GroundIntake.
+     * Creates a new MoveHood.
      */
-    public LoadingStationIntake(Intake intake) {
+    public MoveHood(Hood hood, DoubleSupplier hoodPosition) {
         // Use addRequirements() here to declare subsystem dependencies.
-        m_intake = intake;
-        addRequirements(m_intake);
+        m_hood = hood;
+        this.hoodPosition = hoodPosition;
+        addRequirements(m_hood);
+    }
+
+    public MoveHood(Hood hood, double hoodPosition) {
+        m_hood = hood;
+        this.hoodPosition = () -> {
+            return hoodPosition;
+        };
     }
 
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        m_intake.extendInner();
-        m_intake.retractOuter();
+    }
+
+    // Called every time the scheduler runs while the command is scheduled.
+    @Override
+    public void execute() {
+        m_hood.setPosition(hoodPosition.getAsDouble());
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        m_intake.end();
     }
 
     // Returns true when the command should end.

@@ -1,43 +1,52 @@
-package team3647.frc2020.subsystems;
- 
-import edu.wpi.first.wpilibj.Servo;
- 
-public class Hood implements PeriodicSubsystem {
-    private final Servo hood;
-    private final PeriodicIO pIO;
- 
-    public Hood(int PWMPort) {
-        this.hood = new Servo(PWMPort);
-        pIO = new PeriodicIO();
-    }
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2018-2019 FIRST. All Rights Reserved. */
+/* Open Source Software - may be modified and shared by FRC teams. The code */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project. */
+/*----------------------------------------------------------------------------*/
 
-    public class PeriodicIO {
+package team3647.frc2020.subsystems;
+
+import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpiutil.math.MathUtil;
+
+/**
+ * Add your docs here.
+ */
+public class Hood implements PeriodicSubsystem {
+
+    private class PeriodicIO {
         public double demand;
     }
 
- 
-    public void setPosition(double demand) {
-        // code has min demand and max demand, why? Why do that if I know that I'm not going to set the demand over the servo's capablities?
-        pIO.demand = demand;
+    private final Servo linearActuator;
+    private final double minPosition;
+    private final double maxPosition;
+    private PeriodicIO periodicIO = new PeriodicIO();
+
+
+    public Hood(int linearActuatorPWM, double minPosition, double maxPosition) {
+        linearActuator = new Servo(linearActuatorPWM);
+        this.minPosition = minPosition;
+        this.maxPosition = maxPosition;
+        periodicIO.demand = 0;
     }
-    
-    @Override
-    public void readPeriodicInputs() {
-        // TODO Auto-generated method stub
-        PeriodicSubsystem.super.readPeriodicInputs();
-    }
-    
+
     @Override
     public void writePeriodicOutputs() {
-        // TODO Auto-generated method stub
-        PeriodicSubsystem.super.writePeriodicOutputs();
-        hood.set(pIO.demand);
+        linearActuator.set(periodicIO.demand);
     }
- 
+
+    public void setPosition(double pos) {
+        periodicIO.demand = MathUtil.clamp(Math.abs(pos), minPosition, maxPosition);
+    }
+
+    public double getAppliedPosition() {
+        return periodicIO.demand;
+    }
+
     @Override
     public String getName() {
-        // TODO Auto-generated method stub
-        return null;
+        return "Hood";
     }
-    
 }
